@@ -12,9 +12,16 @@
         <div class="logo">
             <a href="index.html"><img src="img/bandeau-rootstrap-2026.svg" alt="Bandeau RootCase" class="nav-bandeau"></a>
         </div>
-        <nav class="nav-links">
+
+        <button id="burger-menu" class="burger-menu" aria-label="Menu mobile">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+<nav class="nav-links">
             <a href="index.html">La Mallette</a>
-            <a href="consommables.html">Consommables</a>
+            <a href="consommables.html" class="active">Consommables</a>
             <button id="cart-btn" class="cart-btn">Panier (<span id="cart-count">0</span>)</button>
         </nav>
     </header>
@@ -25,7 +32,7 @@
         <!-- Section 1 : Crayons -->
         <section class="product-category">
             <h3 class="category-title">Crayons</h3>
-            <div class="products-grid">
+            <div class="crayons-grid">
                 <div class="product-card" data-product="crayon-primary">
                     <div class="select-badge"></div>
                     <img src="img/crayon-primary.png" alt="Crayon Primary">
@@ -104,7 +111,7 @@
         <!-- Section 2 : Stabylos -->
         <section class="product-category">
             <h3 class="category-title">Stabylos</h3>
-            <div class="products-grid">
+            <div class="stabylos-grid">
                 <div class="product-card" data-product="stabulo-cyan-verticale">
                     <div class="select-badge"></div>
                     <img src="img/stabylo-cyan-verticale.svg" alt="Stabylo Cyan Verticale">
@@ -135,7 +142,7 @@
         <!-- Section 3 : Outils -->
         <section class="product-category">
             <h3 class="category-title">Outils</h3>
-            <div class="products-grid">
+            <div class="outils-grid">
                 <div class="product-card" data-product="regle">
                     <div class="select-badge"></div>
                     <img src="img/regle-seule.png" alt="Règle UI/UX">

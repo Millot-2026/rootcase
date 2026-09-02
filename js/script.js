@@ -3,8 +3,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeDrawerBtn = document.getElementById('close-drawer');
     const productCards = document.querySelectorAll('.product-card');
     const drawerContent = document.getElementById('drawer-content');
+
     const cartBtn = document.getElementById('cart-btn');
-    const cartCount = document.getElementById('cart-count');
+    const cartBtnMobile = document.getElementById('cart-btn-mobile');
+    const cartCountDesktop = document.getElementById('cart-count-desktop');
+    const cartCountMobile = document.getElementById('cart-count');
+
+    const burgerMenu = document.getElementById('burger-menu');
+    const navLinks = document.querySelector('.nav-links');
 
     let cart = [];
 
@@ -32,7 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     function updateCartDisplay() {
-        cartCount.textContent = cart.length;
+        const countStr = cart.length.toString();
+        if (cartCountDesktop) cartCountDesktop.textContent = countStr;
+        if (cartCountMobile) cartCountMobile.textContent = countStr;
     }
 
     function renderCartDrawer() {
@@ -59,26 +67,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 <button class="cart-btn validate-order-btn" style="width: 100%; margin-top: 1.5rem; padding: 0.8rem; cursor: pointer;">Valider la commande</button>
             `;
 
-            // Attacher les écouteurs sur les boutons de suppression du panier
             document.querySelectorAll('.remove-item-btn').forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     const idToRemove = e.currentTarget.getAttribute('data-id');
-                    
-                    // Retirer du tableau cart
+
                     cart = cart.filter(item => item.id !== idToRemove);
 
-                    // Retirer la classe selected de la carte correspondante dans la grille
                     const targetCard = document.querySelector(`.product-card[data-product="${idToRemove}"]`);
                     if (targetCard) {
                         targetCard.classList.remove('selected');
                     }
 
                     updateCartDisplay();
-                    renderCartDrawer(); // Rafraîchir le contenu du tiroir
+                    renderCartDrawer();
                 });
             });
 
-            // Attacher l'écouteur de redirection vers la page checkout.html
             const validateBtn = drawerContent.querySelector('.validate-order-btn');
             if (validateBtn) {
                 validateBtn.addEventListener('click', () => {
@@ -129,12 +133,36 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    cartBtn.addEventListener('click', () => {
+    const openCartHandler = () => {
         renderCartDrawer();
         drawer.classList.add('open');
-    });
+        if (burgerMenu && navLinks) {
+            burgerMenu.classList.remove('open');
+            navLinks.classList.remove('active');
+        }
+    };
 
-    closeDrawerBtn.addEventListener('click', () => {
-        drawer.classList.remove('open');
-    });
+    if (cartBtn) cartBtn.addEventListener('click', openCartHandler);
+    if (cartBtnMobile) cartBtnMobile.addEventListener('click', openCartHandler);
+
+    if (closeDrawerBtn) {
+        closeDrawerBtn.addEventListener('click', () => {
+            drawer.classList.remove('open');
+        });
+    }
+
+    if (burgerMenu && navLinks) {
+        burgerMenu.addEventListener('click', () => {
+            burgerMenu.classList.toggle('open');
+            navLinks.classList.toggle('active');
+        });
+
+        const navItems = navLinks.querySelectorAll('a');
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                burgerMenu.classList.remove('open');
+                navLinks.classList.remove('active');
+            });
+        });
+    }
 });

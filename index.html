@@ -1,22 +1,38 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RootCase — La Mallette du Designer UX/UI</title>
     <link rel="stylesheet" href="styles/style.css">
 </head>
+
 <body>
 
     <header class="site-header">
         <div class="logo">
-            <img src="img/bandeau-rootstrap-2026.svg" alt="Bandeau RootCase" class="nav-bandeau">
+            <a href="index.html"><img src="img/bandeau-rootstrap-2026.svg" alt="Bandeau RootCase"
+                    class="nav-bandeau"></a>
         </div>
+
+        <button id="burger-menu" class="burger-menu" aria-label="Menu mobile">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
         <nav class="nav-links">
-            <a href="mallette.html">La Mallette</a>
+            <a href="index.html" class="active">La Mallette</a>
             <a href="consommables.html">Consommables</a>
-            <button id="cart-btn" class="cart-btn">Panier (<span id="cart-count">0</span>)</button>
+            <div class="cart-container-mobile">
+                <button id="cart-btn" class="cart-btn">Panier (<span id="cart-count">0</span>)</button>
+            </div>
         </nav>
+
+        <div class="cart-container desktop-only">
+            <button id="cart-btn-desktop" class="cart-btn">Panier (<span id="cart-count-desktop">0</span>)</button>
+        </div>
     </header>
 
     <main class="hero-section" id="mallette">
@@ -24,117 +40,11 @@
             <h1>L'outil ultime des designers exigeants.</h1>
             <p>Une mallette de wireframing physique pensée comme un Design System.</p>
         </div>
-        
+
         <div class="mallette-container">
             <img src="img/malette-bootstrap-ouverte.png" alt="Mallette RootCase Ouverte" class="mallette-img">
         </div>
     </main>
-<!--
-    <section id="consommables" class="products-section">
-        <h2>Consommables & Accessoires</h2>
-        <div class="products-grid">
-            <div class="product-card" data-product="crayon-primary">
-                <img src="img/crayon-primary.png" alt="Crayon Primary">
-                <h3>Crayon Primary</h3>
-                <p>2.50 €</p>
-            </div>
-            <div class="product-card" data-product="crayon-secondary">
-                <img src="img/crayon-secondary.png" alt="Crayon Secondary">
-                <h3>Crayon Secondary</h3>
-                <p>2.50 €</p>
-            </div>
-            <div class="product-card" data-product="crayon-hb">
-                <img src="img/crayon-hb.png" alt="Crayon HB">
-                <h3>Crayon HB</h3>
-                <p>2.50 €</p>
-            </div>
-            <div class="product-card" data-product="crayon-b">
-                <img src="img/crayon-b.png" alt="Crayon B">
-                <h3>Crayon B</h3>
-                <p>2.50 €</p>
-            </div>
-            <div class="product-card" data-product="crayon-2b">
-                <img src="img/crayon-2b.png" alt="Crayon 2B">
-                <h3>Crayon 2B</h3>
-                <p>2.50 €</p>
-            </div>
-            <div class="product-card" data-product="crayon-h">
-                <img src="img/crayon-h.png" alt="Crayon H">
-                <h3>Crayon H</h3>
-                <p>2.50 €</p>
-            </div>
-            <div class="product-card" data-product="crayon-dark">
-                <img src="img/crayon-dark.png" alt="Crayon Dark">
-                <h3>Crayon Dark</h3>
-                <p>2.50 €</p>
-            </div>
-            <div class="product-card" data-product="crayon-light">
-                <img src="img/crayon-light.png" alt="Crayon Light">
-                <h3>Crayon Light</h3>
-                <p>2.50 €</p>
-            </div>
-            <div class="product-card" data-product="crayon-success">
-                <img src="img/crayon-success.png" alt="Crayon Success">
-                <h3>Crayon Success</h3>
-                <p>2.50 €</p>
-            </div>
-            <div class="product-card" data-product="crayon-warning">
-                <img src="img/crayon-warning.png" alt="Crayon Warning">
-                <h3>Crayon Warning</h3>
-                <p>2.50 €</p>
-            </div>
-            <div class="product-card" data-product="crayon-danger">
-                <img src="img/crayon-danger.png" alt="Crayon Danger">
-                <h3>Crayon Danger</h3>
-                <p>2.50 €</p>
-            </div>
-            <div class="product-card" data-product="crayon-info">
-                <img src="img/crayon-info.png" alt="Crayon Info">
-                <h3>Crayon Info</h3>
-                <p>2.50 €</p>
-            </div>
-            <div class="product-card" data-product="regle">
-                <img src="img/regle-seule.png" alt="Règle UI/UX">
-                <h3>Règle Gabarit</h3>
-                <p>12.00 €</p>
-            </div>
-            <div class="product-card" data-product="gomme">
-                <img src="img/Gomme.png" alt="Gomme">
-                <h3>Gomme Technique</h3>
-                <p>3.00 €</p>
-            </div>
-            <div class="product-card" data-product="taille-crayon">
-                <img src="img/Taille-crayon.png" alt="Taille-crayon">
-                <h3>Taille-crayon</h3>
-                <p>4.00 €</p>
-            </div>
-            <div class="product-card" data-product="clef-usb">
-                <img src="img/clef-usb.png" alt="Clé USB">
-                <h3>Clé USB Design System</h3>
-                <p>15.00 €</p>
-            </div>
-            <div class="product-card" data-product="eventaille">
-                <img src="img/eventaille-couleur.png" alt="Éventail">
-                <h3>Éventail de couleurs</h3>
-                <p>18.00 €</p>
-            </div>
-            <div class="product-card" data-product="pochette">
-                <img src="img/pochette.png" alt="Pochette">
-                <h3>Pochette de rangement</h3>
-                <p>20.00 €</p>
-            </div>
-            <div class="product-card" data-product="bloc-portrait">
-                <img src="img/bloc-portrait.png" alt="Bloc Portrait">
-                <h3>Bloc Notes Portrait</h3>
-                <p>8.00 €</p>
-            </div>
-            <div class="product-card" data-product="bloc-paysage">
-                <img src="img/bloc-paysage.png" alt="Bloc Paysage">
-                <h3>Bloc Notes Paysage</h3>
-                <p>8.00 €</p>
-            </div>
-        </div>
-    </section>-->
 
     <aside id="drawer" class="drawer">
         <div class="drawer-header">
@@ -148,4 +58,5 @@
 
     <script src="js/script.js"></script>
 </body>
+
 </html>
