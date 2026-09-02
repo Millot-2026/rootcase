@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RootCase — Validation de commande</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <style>
+        .checkout-container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 2.5rem;
+        }
+
+        .checkout-section {
+            background: var(--bg-panel);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .checkout-section h2 {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            color: var(--text-light);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.8rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            background: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            color: var(--text-light);
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .checkout-summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.8rem;
+        }
+
+        .checkout-summary-item img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            margin-right: 1rem;
+        }
+
+        .checkout-summary-info {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        .pay-btn {
+            background: var(--primary-bootstrap);
+            border: none;
+            color: white;
+            padding: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            width: 100%;
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            transition: background-color 0.2s;
+        }
+
+        .pay-btn:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+            .checkout-container {
+                grid-template-columns: 1fr;
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="logo">
+            <a href="index.html"><img src="img/bandeau.png" alt="Bandeau RootCase" class="nav-bandeau"></a>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">La Mallette</a>
+            <a href="consommables.html">Consommables</a>
+            <button id="cart-btn" class="cart-btn">Panier (<span id="cart-count">0</span>)</button>
+        </nav>
+    </header>
+
+    <main class="checkout-container">
+        <!-- Colonne de gauche : Formulaires (Adresse et Paiement) -->
+        <div class="checkout-section">
+            <h2>Informations de livraison</h2>
+            <form id="payment-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstname">Prénom</label>
+                        <input type="text" id="firstname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname">Nom</label>
+                        <input type="text" id="lastname" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="address">Adresse de livraison</label>
+                    <input type="text" id="address" placeholder="123 rue de l'Innovation" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city">Ville</label>
+                        <input type="text" id="city" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="zip">Code Postal</label>
+                        <input type="text" id="zip" required>
+                    </div>
+                </div>
+
+                <h2 style="margin-top: 2rem;">Paiement Sécurisé par Carte Bancaire</h2>
+                <div class="form-group">
+                    <label for="cardholder">Nom sur la carte</label>
+                    <input type="text" id="cardholder" placeholder="Jean Dupont" required>
+                </div>
+                <div class="form-group">
+                    <label for="cardnumber">Numéro de carte</label>
+                    <input type="text" id="cardnumber" placeholder="4000 0000 0000 0000" maxlength="19" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="exp">Date d'expiration</label>
+                        <input type="text" id="exp" placeholder="MM/AA" maxlength="5" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv">CVV</label>
+                        <input type="text" id="cvv" placeholder="123" maxlength="4" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="pay-btn">Payer la commande</button>
+            </form>
+        </div>
+
+        <!-- Colonne de droite : Récapitulatif de la commande -->
+        <div class="checkout-section">
+            <h2>Récapitulatif de la commande</h2>
+            <div id="checkout-items-list" style="margin-bottom: 1.5rem;">
+                <p style="color: #aaa;">Chargement de votre panier...</p>
+            </div>
+            <div id="checkout-totals">
+                <!-- Les totaux s'injecteront ici dynamiquement -->
+            </div>
+        </div>
+    </main>
+
+    <script src="js/checkout.js"></script>
+</body>
+</html>
