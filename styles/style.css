@@ -24,7 +24,6 @@ body {
     position: sticky;
     top: 0;
     z-index: 100;
-    flex-wrap: nowrap;
 }
 
 .logo img {
@@ -56,7 +55,13 @@ body {
     display: flex;
     gap: 1.5rem;
     align-items: center;
-    flex-shrink: 0;
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 .nav-links a {
@@ -101,6 +106,11 @@ body {
     border-radius: 4px;
     cursor: pointer;
     font-weight: 600;
+}
+
+.cart-container {
+    display: flex;
+    justify-content: flex-end;
 }
 
 .cart-container-mobile {
@@ -365,7 +375,10 @@ body {
     }
 
     .site-header {
+        display: flex;
+        justify-content: space-between;
         padding: 0.8rem 1rem;
+        position: relative;
     }
 
     .cart-container {
@@ -385,6 +398,7 @@ body {
         align-items: center;
         gap: 2rem;
         z-index: 1000;
+        transform: none;
     }
 
     .nav-links.active {

@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RootCase — Consommables & Accessoires</title>
     <link rel="stylesheet" href="styles/style.css">
 </head>
+
 <body>
 
     <header class="site-header">
         <div class="logo">
-            <a href="index.html"><img src="img/bandeau-rootstrap-2026.svg" alt="Bandeau RootCase" class="nav-bandeau"></a>
+            <a href="index.html"><img src="img/bandeau-rootstrap-2026.svg" alt="Bandeau RootCase"
+                    class="nav-bandeau"></a>
         </div>
 
         <button id="burger-menu" class="burger-menu" aria-label="Menu mobile">
@@ -19,11 +22,17 @@
             <span></span>
         </button>
 
-<nav class="nav-links">
+        <nav class="nav-links">
             <a href="index.html">La Mallette</a>
             <a href="consommables.html" class="active">Consommables</a>
-            <button id="cart-btn" class="cart-btn">Panier (<span id="cart-count">0</span>)</button>
+            <div class="cart-container-mobile">
+                <button id="cart-btn" class="cart-btn">Panier (<span id="cart-count">0</span>)</button>
+            </div>
         </nav>
+
+        <div class="cart-container desktop-only">
+            <button id="cart-btn-desktop" class="cart-btn">Panier (<span id="cart-count-desktop">0</span>)</button>
+        </div>
     </header>
 
     <main class="products-section">
@@ -214,4 +223,5 @@
 
     <script src="js/script.js"></script>
 </body>
+
 </html>
